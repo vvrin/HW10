@@ -5,17 +5,19 @@ a
 ```
 
 ```{r} 
-map %>% group_by(DAY_WEEK) %>% tally()
-map %>% ggplot(aes(x=DAY_WEEK)) +
+accident %>% group_by(DAY_WEEK) %>% tally()
+accident %>% ggplot(aes(x=DAY_WEEK)) +
   geom_bar() +
   ggtitle("Accidents on days of the week") +
   ylab("number of accidents")
 ``` 
 ```{r}
-time = map %>% filter(HOUR <= 24) %>% group_by(HOUR) %>% tally()
+time = accident %>% filter(HOUR <= 24) %>% group_by(HOUR) %>% tally()
 time %>%
   ggplot(aes(x=HOUR)) +
   geom_bar(aes(weight = n)) +
   ggtitle("Hourly time of accidents") + ylab("number of accidents")
 ```
-
+```{r}
+filter(accident, DRUNK_DR > 0) %>% summarize(n=n())
+```
