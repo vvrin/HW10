@@ -11,4 +11,11 @@ map %>% ggplot(aes(x=DAY_WEEK)) +
   ggtitle("Accidents on days of the week") +
   ylab("number of accidents")
 ``` 
+```{r}
+time = map %>% filter(HOUR <= 24) %>% group_by(HOUR) %>% tally()
+time %>%
+  ggplot(aes(x=HOUR)) +
+  geom_bar(aes(weight = n)) +
+  ggtitle("Hourly time of accidents") + ylab("number of accidents")
+```
 
