@@ -5,10 +5,10 @@ a
 ```
 
 ```{r} 
-library(sf) 
-library(ggplot2)
-library(ggmap) 
-map = get_map(location = c(lon=95, lat=35), zoom=4)
-ggplot(map)+geom_sf(data=a, aes(x=LONGITUD, y=LATITUDE),color=blue,alpha=0.5)+ggmap(map)
+map %>% group_by(DAY_WEEK) %>% tally()
+map %>% ggplot(aes(x=DAY_WEEK)) +
+  geom_bar() +
+  ggtitle("Accidents on days of the week") +
+  ylab("number of accidents")
 ``` 
 
