@@ -1,0 +1,14 @@
+
+```{r}
+a = read.csv("/Users/reo/Desktop/DS202-Spring2023/Practice/data/fars2016/accident.csv")
+a
+```
+
+```{r} 
+library(sf) 
+library(ggplot2)
+library(ggmap) 
+map = get_map(location = c(lon=95, lat=35), zoom=4)
+ggplot(map)+geom_sf(data=a, aes(x=LONGITUD, y=LATITUDE),color=blue,alpha=0.5)+ggmap(map)
+``` 
+
