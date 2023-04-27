@@ -21,7 +21,7 @@ time %>%
 ```
 
 ```{r}
-filter(accident, DRUNK_DR > 0) %>% summarize(n=n())
+filter(accident, DRUNK_DR > 1) %>% summarize(n=n())
 ```
 
 ```{r}
