@@ -1,16 +1,17 @@
 
 ```{r}
-a = read.csv("/Users/reo/Desktop/DS202-Spring2023/Practice/data/fars2016/accident.csv")
-a
+accident = read.csv("/Users/reo/Desktop/DS202-Spring2023/Practice/data/fars2016/accident.csv")
+accident
 ```
 
-```{r} 
+```{r}
+library(mosaic)
 accident %>% group_by(DAY_WEEK) %>% tally()
 accident %>% ggplot(aes(x=DAY_WEEK)) +
   geom_bar() +
   ggtitle("Accidents on days of the week") +
   ylab("number of accidents")
-``` 
+```
 ```{r}
 time = accident %>% filter(HOUR <= 24) %>% group_by(HOUR) %>% tally()
 time %>%
@@ -18,6 +19,29 @@ time %>%
   geom_bar(aes(weight = n)) +
   ggtitle("Hourly time of accidents") + ylab("number of accidents")
 ```
+
 ```{r}
 filter(accident, DRUNK_DR > 0) %>% summarize(n=n())
 ```
+
+```{r}
+people =  read.csv("/Users/reo/Documents/DS.202/person.csv")
+people
+```
+```{r}
+people = people %>% filter(PER_TYP == 1)
+people = people %>% filter(SEX == 1 | SEX == 2)
+```
+
+tally_group = people %>% group_by(DAY_WEEK, HOUR, SEX) %>% 
+  summarise(n = n())
+
+
+
+tally_group %>% ggplot(aes(x = HOUR, y = n, color = SEX)) +
+  geom_point() + 
+  facet_wrap(~DAY_WEEK)
+
+
+
+
