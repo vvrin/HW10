@@ -1,3 +1,11 @@
+Author: Vrindha Vegiraju
+Homework 10
+04/26/23
+
+Link to GitHub: https://github.com/vvrin/HW10.git
+
+
+
 
 ```{r}
 accident = read.csv("/Users/reo/Desktop/DS202-Spring2023/Practice/data/fars2016/accident.csv")
